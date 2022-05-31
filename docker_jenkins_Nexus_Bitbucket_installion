@@ -1,0 +1,24 @@
+
+====INSTALLATION OF  JENKINS USING DOCKER CONTAINER=====
+1. docker pull jenkins/jenkins:lts
+2. mkdir -p /c/Users/govar/jenkins
+3. docker run -p 8080:8080 -p 50000:50000 -v /c/Users/govar/jenkins/:/var/jenkins_home jenkins/jenkins:lts
+4. Access Jenkins on browser http://localhost:8080/
+====END=====END=====END=====END===============END=======
+
+=====INSTALLTION OF NEXUS USING DOCKER CONTAINER=====
+1. docker pull sonatype/nexus3
+2. mkdir -p /c/Users/govar/nexus-data
+3. chown -R 200 nexus-data/
+4. docker volume create --name  nexus-data
+5. docker run -d -p 8081:8081 --name nexus -v /c/Users/govar/nexus-data:/nexus-data sonatype/nexus3
+6. Access Nexus on browser http://localhost:8081/
+====END=====END=====END=====END===============END=======
+
+
+=====INSTALLTION OF NEXUS USING BITBUCKET CONTAINER=====
+1. docker pull atlassian/bitbucket 
+2. docker volume create --name bitbucketVolume
+3. docker run -v bitbucketVolume:/var/atlassian/application-data/bitbucket --name="bitbucket" -d -p 7990:7990 -p 7999:7999 atlassian/bitbucket
+4. Access Bitbucket on browser http://localhost:7999
+====END=====END=====END=====END===============END=======
